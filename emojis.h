@@ -1,7 +1,7 @@
 #ifndef EMOJIS_H
 #define EMOJIS_H
 
-#include "emotes/rest.h"
-#include "emotes/sigh.h"
+#include "rest.h"
+#include "sigh.h"
 
 #endif
