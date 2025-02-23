@@ -16,14 +16,14 @@ extern BB_SPI_LCD lcd; // เปลี่ยนจาก oled เป็น lcd �
 // CS  | Chip Select (10)
 // BL  | Backlight (4) - ถ้ามี
 
-// Pin configuration
-#define MISO_PIN -1 // ไม่ต้องใช้ MISO สำหรับจอแสดงผล
-#define MOSI_PIN 6
-#define CLK_PIN 7
-#define CS_PIN 10
-#define DC_PIN 3
-#define RST_PIN 2
-#define BL_PIN 4 // ถ้ามี
+// Pin configuration for Display
+#define MISO_PIN -1    // ไม่ได้ใช้
+#define MOSI_PIN 37    // GPIO37 (สาย SDA/MOSI)
+#define CLK_PIN 36     // GPIO36 (สาย SCL/CLK)
+#define CS_PIN 35      // GPIO35 (สาย CS)
+#define DC_PIN 33      // GPIO33 (สาย DC)
+#define RST_PIN 34     // GPIO34 (สาย RST)
+#define BL_PIN 21      // GPIO21 (สาย BL - Backlight)
 
 // SPI Frequency (สูงสุด 40MHz แต่ 20MHz เสถียรกว่า)
 #define SPI_FREQUENCY 20000000

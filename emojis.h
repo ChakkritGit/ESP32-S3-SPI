@@ -3,5 +3,6 @@
 
 #include "rest.h"
 #include "sigh.h"
+#include "shake.h"
 
 #endif

@@ -33,6 +33,7 @@ extern GIFData gifFiles[];
 #define TOTAL_GIFS (sizeof(gifFiles) / sizeof(gifFiles[0]))
 #define REST_EMOTE rest
 #define SIGH_EMOTE sigh
+#define SHAKE_EMOTE shake
 
 // Function declarations
 void cleanupGIFContext(void);
@@ -41,5 +42,6 @@ void playGIF(uint8_t *gifData, size_t gifSize, bool loop);
 void playRandomGIF(void);
 void initializeGIF(void);
 void printMemoryStats(void);
+void playShakeGIF(void);
 
 #endif
