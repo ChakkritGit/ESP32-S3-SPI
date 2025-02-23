@@ -9,7 +9,6 @@ void setup() {
   initializeMPU6050();
   initializeLCD();
   displayBootMessage("Hello World!");
-  // No need to initialize the RGB LED
   delay(2000);
   initializeGIF();
 }
@@ -17,24 +16,27 @@ void setup() {
 // the loop function runs over and over again forever
 void loop() {
   static bool isShaking = false;
+  static unsigned long lastShakeTime = 0;
+  static unsigned long lastPlayTime = 0;
 
-  // Check if shake is detected
+  unsigned long currentMillis = millis();
+
+  // ใช้ Low-Pass Filter ลด Noise
   if (detectShake()) {
-    if (!isShaking) {
+    if (!isShaking || (currentMillis - lastShakeTime > 300)) { // Debounce 300ms
       playShakeGIF();
       isShaking = true;
-      delay(500); // Small delay to prevent continuous trigger
+      lastShakeTime = currentMillis;
     }
   } else {
-    // If no shake, play random GIF periodically
-    static unsigned long lastPlayTime = 0;
-    unsigned long currentMillis = millis();
-    if (currentMillis - lastPlayTime > 5000) { // Every 5 seconds
+    isShaking = false;
+    
+    // เปลี่ยน GIF ทุก 5 วินาทีถ้าไม่มีการสั่น
+    if (currentMillis - lastPlayTime > 5000) {
       playRandomGIF();
       lastPlayTime = currentMillis;
     }
-    isShaking = false;
   }
 
-  delay(100);
+  delay(50); // ลดดีเลย์เพื่อให้ระบบตอบสนองไวขึ้น
 }
